@@ -1,0 +1,39 @@
+s = str(input("введите пример:"))
+if '+' in s:
+    a, b = s.split('+')
+    print(int(a) + int(b))
+if '-' in s:
+    a, b = s.split('-')
+    print(int(a) - int(b))
+if '*' in s:
+    a, b = s.split('*')
+    print(int(a) * int(b))
+if '/' in s:
+    a, b = s.split('/')
+    print(int(a) / int(b))
+
+
+
+
+
+s = [23, 64, 867, 34, -63, -67, 30, 104, 380, 0, 0]
+pos_count, neg_count, nulls = 0, 0, 0
+num = 0
+mi = min(s)
+ma = max(s)
+while num < len(s):
+
+    if s[num] >= 0:
+        pos_count += 1
+    else:
+        neg_count += 1
+    if s[num] == 0:
+        nulls += 1
+
+    num += 1
+
+print("Positive numbers in the list: ", pos_count)
+print("Negative numbers in the list: ", neg_count)
+print("Null numbers in the list: ", nulls)
+print("Max number in the list: ", ma)
+print("Min number in the list: ", mi)
