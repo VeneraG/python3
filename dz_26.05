@@ -1,0 +1,19 @@
+e = 0
+w = str(random.randint(1000, 9999))
+while e < 21:    
+    cow = 0  
+    bik = 0
+    ee = str(input("turn:")) 
+    for i in range(0, 4):
+        if w[i] == ee[i]:        
+             cow += 1
+        if ee[i] in w:       
+             bik += 1
+    print(f'{bik} bik(s) and {cow} cow(s)')
+    if w == ee:     
+        print('win')
+        break  
+    cow = 0
+    bik = 0
+    e += 1
+    print(w)
