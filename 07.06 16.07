@@ -1,0 +1,62 @@
+e = 0
+w = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+w1 = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+w2 = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+w3 = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+r = w + w1 + w2 + w3
+ask = int(input("1.ot 1 do 100 \n2.ot 100 do 1\n"))
+if ask==1:  
+    er=sorted(r)
+    print(er)
+elif ask==2:  
+    rr=sorted(r)
+    list(reversed(rr))  
+    print(list(reversed(rr)))
+print(r) 
+
+
+
+import random
+e = 0
+w = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+w1 = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+w2 = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+w3 = [random.randint(1, 99) for i in range(random.randint(1, 10))]
+r = []
+for i in range(0, 99):
+    if i in w:     
+        r.append(i)
+    if i in w1:  
+        r.append(i)
+    if i in w2:     
+        r.append(i)
+    if i in w3:   
+        r.append(i)
+print(r, w, w1, w2, w3)
+ask = int(input("1.ot 1 do 100 \n2.ot 100 do 1\n"))
+if ask == 1:
+    er = sorted(r)   
+    print(er)
+elif ask == 2:
+    rr = sorted(r)  
+    list(reversed(rr))
+    print(list(reversed(rr)))
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1 
+    while left <= right:
+        mid = (left + right) // 2    
+        if arr[mid] == target:
+            return mid       
+        elif arr[mid] < target:
+            left = mid + 1     
+        else:
+            right = mid - 1    
+            return - 1
+
+arr = [2, 5, 5, 8, 3, 6, 7, 9, 5, 1, 5, 7, 3]
+target = int(input("chislo:"))
+result = binary_search(r, target)
+if result != -1:
+    print(f'Элемент найден в индексе {result}.')
+else:    print('Элемент не найден')
+print(r)
