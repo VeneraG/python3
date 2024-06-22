@@ -1,0 +1,40 @@
+w = (233, 2, 21, 23, 1, 65, 4, 5,3)
+ew = (3, 89, 65, 213, 9, 89)
+t = (78, 78, 3, 675, 34, 234, 34,65)
+wew=[]
+for i in w:
+    if i in ew and i in t:
+        wew.append(i)
+print(wew)
+
+
+
+
+
+t = (78, 78, 3, 675, 34, 234, 34, 65)
+
+def iss(list):
+    wew = []
+    for i in list:
+        if i in list :
+
+            if i in wew:
+                continue
+            else:
+                wew.append(i)
+    print(wew)
+iss(t)
+
+
+
+
+w = (3, 2, 1, 23, 1, 65, 4, 5, 3, 2, 1, 233)
+ew = (3, 89, 1, 213, 9, 89)
+t = (3, 78, 1, 675, 34, 234, 34, 65)
+
+wew = []
+for i in range(0, len(w)):
+    if i in ew and i in t:
+        if w.index(i) == ew.index(i) and w.index(i) == t.index(i):
+            wew.append(i)
+print(wew)
