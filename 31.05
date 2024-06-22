@@ -1,0 +1,70 @@
+import random
+w=0
+e = [random.randint(1, 50) for e in range(12)]
+r= int(len(e)/3)
+print(e)
+for i in range(r+r):
+    w+=e[i]
+if w /(r + r) >0:
+    e[0:r+r]=sorted(e[0:r+r])
+    e[r+r:]=reversed(e[r+r:])
+    print(e)
+else:
+    e[0:r]=sorted(e[0:r ])
+    e[r:] = reversed(e[r :])
+    print(e)
+
+
+    
+import random
+e = [random.randint(1, 12) for e in range(10)]
+
+def odin():  
+    print(e)
+
+def dva(): 
+    print(e)
+    r = int(input('какую по номеру оценку хочешь исправить?:'))   
+    e[r - 1] = random.randint(1, 12)
+    print(e)
+def tri():
+    we = 0  
+    for i in range(len(e)):
+        we += e[i] 
+        re = we / len(e)
+    if re >= 10.7:     
+        print(f"est stipuxa {re}")
+    else:    
+        print(f"net stipuxa {re}")
+
+def chetiri(): 
+    wee = sorted(e)
+    print(wee)
+while True:
+    d = int(input(f"1.Вывод оценокю \n 2.пересдача экза. \n3.стипуха есть нет.\n4.отсортирю оценки за 50 руб.\n5.все :\n"))   
+    if d == 1:
+        odin() 
+    elif d == 2:
+            dva()  
+    elif d == 3:
+            tri()  
+    elif d == 4:
+            chetiri() 
+    else:
+            break
+
+
+import random
+N = 10
+a = [random.randint(1, 99) for _ in range(N)]
+print(a)
+i = 0
+while i < N - 1:  
+    j = 0
+    while j < N - 1 - i:  
+        if a[j] > a[j+1]:
+            a[j], a[j+1] = a[j+1], a[j]    
+            j += 1
+    i += 1
+    print(a)
+            
