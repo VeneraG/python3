@@ -1,0 +1,36 @@
+class Basketboys(object):
+    def __init__(self, name, height):
+        self.name = name
+        self.height = height
+
+    def get_info(self):
+        return self.name, self.height
+
+    def set_name(self, anothName):
+        self.name = anothName
+
+    def set_height(self, height):
+        self.height = height
+
+    def delite(self):
+        self.name = None
+        self.height = None
+
+
+list = []
+while True:
+    ask = int(input("Menu:\n 1.Add legend\n 2.set legend\n3.delete legend\n 4.end\n "))
+    if ask == 1:
+        w = input("add name:")
+        w2 = input("add height:")
+        list.append(Basketboys(w, w2))
+        print(f' you add {w} {w2}cm')
+    elif ask == 2:
+        w = input("set name:")
+        w2 = input("set height:")
+        Basketboys.set_name(w)
+        Basketboys.set_height(w2)
+    elif ask==3:
+        Basketboys.delite()
+    elif ask == 4:
+        break
