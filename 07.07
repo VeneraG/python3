@@ -1,0 +1,43 @@
+class cels:
+    @staticmethod
+    def ravno(a, b):
+        if a < -273 and b < -273:
+            print("error")
+        else:
+            if a > b:
+                print("a bigger as b")
+            else:
+                print("b bigger as a")
+
+    @staticmethod
+    def sravnenie(a, b):
+        if a < -273 and b < -273:
+            print("error")
+        else:
+            return a + b, a - b
+
+
+class kelv:
+    @staticmethod
+    def ravno(a, b):
+        if a > b:
+            print("a bigger as b")
+        else:
+            print("b bigger as a")
+
+    @staticmethod
+    def sravnenie(a, b):
+        return a + b, a - b
+
+
+class far:
+    @staticmethod
+    def ravno(a, b):
+        if a > b:
+            print("a bigger as b")
+        else:
+            print("b bigger as a")
+
+    @staticmethod
+    def sravnenie(a, b):
+        return a + b, a - b
