@@ -1,0 +1,215 @@
+
+class Device:
+    def __init__(self, year, material):
+        self.__year = year
+        self.__material = material
+
+    @property
+    def year(self):
+        return self.__year
+
+    @year.setter
+    def year(self, n):
+        try:
+            self.__year = int(n)
+        except:
+            print("not a num")
+
+    @property
+    def material(self):
+        return self.__material
+
+    @material.setter
+    def material(self, n):
+        try:
+            self.__material = int(n)
+        except:
+            print("not a num")
+
+
+class CoffeeMachine(Device):
+    def __init__(self, year, material, coffee):
+        super().__init__(year, material)
+        self.coffee = coffee
+
+    def varit_coffee(self):
+        print(self.coffee)
+
+
+class MeatGrinder(Device):
+    def __init__(self, year, material, meat):
+        super().__init__(year, material)
+        self.__meat = meat
+
+    def set_meat(self):
+        return self.__meat
+
+    def delat_farsh(self):
+        print('farsh of ', self.set_meat())
+
+
+class Blender(Device):
+    def __init__(self, year, material, what_to_shake):
+        super().__init__(year, material)
+        self.__what_to_shake = what_to_shake
+
+    def set_what_to_shake(self):
+        return self.__what_to_shake
+
+    def shaker(self):       
+        print('shake of ', self.set_what_to_shake())
+
+
+d = MeatGrinder("kk", "jl", "govyadina")
+d.delat_farsh()
+dy = CoffeeMachine("rtf", "ftg", "latte")
+dy.varit_coffee()
+dye = Blender("rtf", "ftg", "apples")
+dye.shaker()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Ship:
+    def init(self, year, name):
+        self.__year = year
+        self.__name = name
+
+    @property
+    def year(self):
+        return self.__year
+
+    @year.setter
+    def year(self, n):
+        try:
+            self.__year = int(n)
+        except:
+            print("not a num")
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, n):
+        try:
+            self.__name = int(n)
+        except:
+            print("not a num")
+
+
+class Frigate(Ship):
+    def __init__(self, year, name, capitan):
+        super().__init__(year, name)
+        self.capitan = capitan
+
+    def imya_capitan(self):
+        print("name of capitan:", self.capitan)
+
+
+class Destroyer(Ship):
+    def __init__(self, year, name, country):
+        super().__init__(year, name)
+        self.__country = country
+
+    def set_country(self):
+        return self.__country
+
+    def kakaya_country(self):
+        print('ship of ', self.set_country())
+
+
+class Cruiser(Ship):
+    def __init__(self, year, name, price):
+        super().__init__(year, name)
+        self.__price = price
+
+    def set_price(self):
+        return self.__price
+
+    def cabin(self):
+        print('cabin costs ', self.set_price())
+
+
+d = Frigate("kk", "jl", "govyadina")
+d.imya_capitan()
+dy = Destroyer("rtf", "ftg", "latte")
+dy.kakaya_country()
+dye = Cruiser("rtf", "ftg", "apples")
+dye.cabin()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Money:
+    def __init__(self, rub, kop):
+        self.__rub = rub
+        self.__kop = kop
+
+    @property
+    def rub(self):
+        return self.__rub
+
+    @rub.setter
+    def rub(self, n):
+        try:
+            self.__rub = int(n)
+        except:
+            print("not a num")
+
+    @property
+    def kop(self):
+        return self.__kop
+
+    @kop.setter
+    def kop(self, n):
+        try:
+            self.__kop = int(n)
+        except:
+            print("not a num")
+
+    def get_euro(self):
+        print((self.__rub + self.__kop * 0.01) / 95)
+
+    def get_dollar(self):
+        print((self.__rub + self.__kop * 0.01) / 88)
+
+    def set_euro(self, euro):
+        self.__rub = euro * 95
+
+    def set_dollar(self, dollar):
+        self.__rub = dollar * 88
+
+
+e = Money(95, 5)
+e.get_euro()
+e.get_dollar()
+e.set_euro(232)
+e.get_euro()
+
