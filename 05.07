@@ -1,0 +1,89 @@
+class Car:
+    def __init__(self, name,age,model,color,price):
+        self._age = age
+        self._name = name
+        self._model = model
+        self._color = color
+        self._price = price
+
+
+    def get_age(self):
+        return self._age
+    def set_age(self, a):
+        self._age = a
+    def get_name(self):
+        return self._name
+    def set_name(self, a):
+        self._name = a
+    def get_model(self):
+        return self._model
+    def set_model(self, a):
+        self._model = a
+    def get_color(self):
+        return self._color
+    def set_color(self, a):
+        self._color = a
+    def get_price(self):
+        return self._price
+    def set_price(self, a):
+        self._price = a
+
+class Book:
+    def __init__(self, name,age,model,color,price):
+        self._age = age
+        self._name = name
+        self._model = model
+        self._color = color
+        self._price = price
+
+
+    def get_age(self):
+        return self._age
+    def set_age(self, a):
+        self._age = a
+    def get_name(self):
+        return self._name
+    def set_name(self, a):
+        self._name = a
+    def get_model(self):
+        return self._model
+    def set_model(self, a):
+        self._model = a
+    def get_color(self):
+        return self._color
+    def set_color(self, a):
+        self._color = a
+    def get_price(self):
+        return self._price
+    def set_price(self, a):
+        self._price = a
+
+class Stadium:
+    def __init__(self, name,age,model,color,price):
+        self._age = age
+        self._name = name
+        self._model = model
+        self._color = color
+        self._price = price
+
+
+    def get_age(self):
+        return self._age
+    def set_age(self, a):
+        self._age = a
+    def get_name(self):
+        return self._name
+    def set_name(self, a):
+        self._name = a
+    def get_model(self):
+        return self._model
+    def set_model(self, a):
+        self._model = a
+    def get_color(self):
+        return self._color
+    def set_color(self, a):
+        self._color = a
+    def get_price(self):
+        return self._price
+    def set_price(self, a):
+        self._price = a
