@@ -1,0 +1,76 @@
+with open('text3.txt', 'r', encoding='utf-8') as f:
+    data = f.read()
+print("Your File:\n",data)
+
+list = []
+list2=[]
+with open('text3.txt', 'r', encoding='utf-8') as f:
+    w=f.readlines()
+print(w)
+while True:
+
+
+    ask = int(input("1.Add man \n2.edit man\n3.delete man\n4.search man\n5.save in file\n6.show file\n7.end\nenter a num:"))
+    if ask == 7:
+        f = open('text3.txt', 'w')
+
+        for i in range(len(w)):
+
+            f.write(w[i])
+
+        break
+
+    elif ask == 1:
+
+        name=input("name: ")
+        
+        w.append(name)
+        list2.append(name)
+
+    elif ask == 2:
+        ask2=input("which name are you want to edit?: ")
+        ask2=ask2+"\n"
+        ans=input("edit:")
+        ans = ans + "\n"
+        if ask2 in w:
+            w.remove(ask2)
+            w.append(ans)
+
+        else:
+            print("no such name")
+    elif ask == 3:
+        ask3 = input("which name are you want to delete?: ")
+        ask3 = ask3 + "\n"
+
+        if ask3 in w:
+            w.remove(ask3)
+            print(w)
+
+        else:
+            
+            print("no such name")
+
+    elif ask == 4:
+        ask4 = input("search: ")
+        for i in range(len(w)):
+
+            if ask4 in w[i]:
+                print(w[i])
+
+
+    elif ask==6:
+        with open('text3.txt', 'r', encoding='utf-8') as f:
+            data = f.read()
+        print("Your File:\n",data)
+    elif ask==5:
+        f = open('text3.txt', 'w')
+
+        for i in range(len(w)):
+            f.write(w[i])
+        print("done!")
+
+
+
+
+
+
