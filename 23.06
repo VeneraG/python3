@@ -1,0 +1,75 @@
+#
+with open('text3.txt', 'r', encoding='utf-8') as f:
+    data = f.readlines()
+print(data)
+with open('text4.txt', 'r', encoding='utf-8') as f:
+    data2 = f.readlines()
+print(data2)
+
+for i in range(len(data)):
+    if data[i] in data2:
+        continue
+    else:
+        print(data[i])
+
+file = open("text3.txt")
+
+lines = 0
+words = 0
+symbols = 0
+gl = 0
+sogl = 0
+
+for line in file:
+    lines += 1
+    words += len(line.split())
+    symbols += len(line)
+    if 'e' in line or 'u' in line or 'i' in line or 'o' in line or 'e' in line or 'y' in line or 'a' in line:
+        gl += 1
+    else:
+        sogl += 1
+
+print("Lines:", lines)
+print("Words:", words)
+print("Symbols:", symbols, gl, sogl)
+
+with open('text3.txt', 'r', encoding='utf-8') as f:
+    data = f.readlines()
+
+with open('text4.txt', 'w', encoding='utf-8') as f:
+    for i in range(len(data) - 1):
+        f.write(data[i])
+
+
+
+
+
+file = open("text3.txt")
+
+i=0
+for line in file:
+    if i<len(line):
+        i=len(line)
+print(i)
+
+
+
+
+
+with open('text3.txt', 'r', encoding='utf-8') as f:
+    w=f.readlines()
+
+ask2=input("which name are you want to edit?: ")
+ask2=ask2+"\n"
+ans=input("edit:")
+
+if ask2 in w:
+    w.remove(ask2)
+    w.append(ans)
+
+
+f = open('text3.txt', 'w')
+
+for i in range(len(w)):
+
+    f.write(w[i])
