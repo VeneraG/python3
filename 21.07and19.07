@@ -1,0 +1,187 @@
+class Triangle:
+    def __init__(self, a, h):
+        self.a = a
+        self.h = h
+
+    def __rmul__(self):
+        return self.a * self.h * 0.5
+
+    def __str__(self):
+        return self.__rmul__()
+
+
+class Rectangle:
+    def __init__(self, a, h):
+        self.a = a
+        self.h = h
+
+    def __rmul__(self):
+        return self.a * self.h
+
+    def __str__(self):
+        return self.__rmul__()
+
+
+class Trapezoid:
+    def __init__(self, a, b, h):
+        self.a = a
+        self.h = h
+        self.b = b
+
+    def __rmul__(self):
+        return (self.a + self.b) / 2 * self.h
+
+    def __str__(self):
+        return self.__rmul__()
+
+
+s = Rectangle(1, 2)
+print(s.__str__())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Shape:
+    def __init__(self, x, y):
+        self.x=x
+        self.y = y
+
+    def show(self):
+        pass
+
+    def save(self, filename):
+        pass
+
+    def load(self, filename):
+        pass
+
+
+class Square():
+    def __init__(self, x, y, side):
+        self.x = x
+        self.y = y
+        self.side = side
+
+    def show(self):
+        print(f"Square: ({self.x}, {self.y}), side = {self.side}")
+
+    def save(self, filename):
+        with open(filename, "a") as file:
+            file.write(f"Square {self.x} {self.y} {self.side}\n")
+
+    def load(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                if line.startswith("Square"):
+                    parts = line.strip().split()
+                    self.x = int(parts[1])
+                    self.y = int(parts[2])
+                    self.side = int(parts[3])
+                    break
+
+
+class Rectangle():
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def show(self):
+        print(f"Rectangle: ({self.x}, {self.y}), width = {self.width}, height = {self.height}")
+
+    def save(self, filename):
+        with open(filename, "a") as file:
+            file.write(f"Rectangle {self.x} {self.y} {self.width} {self.height}\n")
+
+    def load(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                if line.startswith("Rectangle"):
+                    parts = line.strip().split()
+                    self.x = int(parts[1])
+                    self.y = int(parts[2])
+                    self.width = int(parts[3])
+                    self.height = int(parts[4])
+                    break
+
+
+class Circle():
+    def __init__(self, x, y, radius):
+
+        self.x=x
+        self.y=y
+        self.radius = radius
+
+    def show(self):
+        print(f"Circle: ({self.x}, {self.y}), radius = {self.radius}")
+
+    def save(self, filename):
+        with open(filename, "a") as file:
+            file.write(f"Circle {self.x} {self.y} {self.radius}\n")
+
+    def load(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                if line.startswith("Circle"):
+                    parts = line.strip().split()
+                    self.x = int(parts[1])
+                    self.y = int(parts[2])
+                    self.radius = int(parts[3])
+                    break
+
+
+class Ellipse():
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+
+    def show(self):
+        print(f"Ellipse: ({self.x}, {self.y}), width = {self.width}, height = {self.height}")
+
+    def save(self, filename):
+        with open(filename, "a") as file:
+            file.write(f"Ellipse {self.x} {self.y} {self.width} {self.height}\n")
+
+    def load(self, filename):
+        with open(filename, "r") as file:
+            for line in file:
+                if line.startswith("Ellipse"):
+                    parts = line.strip().split()
+                    self.x = int(parts[1])
+                    self.y = int(parts[2])
+                    self.width = int(parts[3])
+                    self.height = int(parts[4])
+                    break
+
+
+s=Rectangle(2,3,23,4)
+s.save("text3.txt")
+s.load("text3.txt")
+s.show()
+
+
+
+
+
+
+
+
+
+
+
