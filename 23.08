@@ -1,0 +1,134 @@
+import json
+
+
+class CountriesDict:
+    def __init__(self):
+        self.d = {}
+
+    def load(self):
+        with open('text3.txt', 'r') as file:
+            s = ''
+            for string in file:
+                s += str(string)
+            self.d = json.loads(s)
+
+    def save(self):
+        with open('text3.txt', 'w') as file:
+            s = json.dumps(self.d)
+            file.writelines(s)
+
+    def add(self):
+        country = input('country')
+        capital = input('capital')
+        self.d[country] = capital
+
+    def find(self):
+        try:
+            return self.d[input('country')]
+        except:
+            return 'no country in list'
+
+    def delete(self):
+        del self.d[input('country')]
+
+    def __str__(self):
+        return str(self.d)
+
+
+if __name__ == '__main__':
+    d = CountriesDict()
+    while True:
+        print('select action 1 - add, 2 - change, 3 - find, 4 - del, 5 - save, 6 - load, 7 - show list, 8 - exit')
+        action = int(input())
+        if action == 1:
+            d.add()
+        elif action == 2:
+            d.add()
+        elif action == 3:
+            print(d.find())
+        elif action == 4:
+            d.delete()
+        elif action == 5:
+            d.save()
+        elif action == 6:
+            d.load()
+        elif action == 7:
+            print(d)
+        elif action == 8:
+            print('bye')
+            break
+        else:
+            print('incorrect action')
+            
+            
+
+
+
+
+
+
+
+
+
+            
+import json
+
+
+class CountriesDict:
+    def __init__(self):
+        self.d = {}
+
+    def load(self):
+        with open('text4.txt', 'r') as file:
+            s = ''
+            for string in file:
+                s += str(string)
+            self.d = json.loads(s)
+
+    def save(self):
+        with open('text4.txt', 'w') as file:
+            s = json.dumps(self.d)
+            file.writelines(s)
+
+    def add(self):
+        country = input('country')
+        capital = input('capital')
+        self.d[country] = capital
+
+    def find(self):
+        try:
+            return self.d[input('country')]
+        except:
+            return 'no country in list'
+
+    def delete(self):
+        del self.d[input('country')]
+
+    def __str__(self):
+        return str(self.d)
+
+
+if __name__ == '__main__':
+    d = CountriesDict()
+    while True:
+        print('select action 1 - add, 2 - change, 3 - find, 4 - del, 5 - save, 6 - load, 7 - show list, 8 - exit')
+        action = int(input())
+        if action == 1:
+            d.add()
+        elif action == 2:
+            d.add()
+        elif action == 3:
+            print(d.find())
+        elif action == 4:
+            d.delete()
+        elif action == 5:
+            d.save()
+        elif action == 6:
+            d.load()
+        elif action == 7:
+            print(d)
+        elif action == 8:
+            print('bye')
+            break
+        else:
+            print('incorrect action')
