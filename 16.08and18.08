@@ -1,0 +1,149 @@
+def print_menu():
+    print("\nМеню:")
+    print("1. Добавить новое число в список")
+    print("2. Удалить все вхождения числа из списка")
+    print("3. Показать содержимое списка")
+    print("4. Проверить наличие числа в списке")
+    print("5. Заменить значение в списке")
+    print("6. Выйти")
+
+
+def main():
+    numbers = []
+    print("Введите числа (по одному на строку, введите 'stop' для завершения):")
+    while True:
+        num = input()
+        if num.lower() == "stop":
+            break
+        numbers.append(int(num))
+
+    while True:
+        print_menu()
+        choice = input("Сделайте выбор: ")
+
+        if choice == "1":
+            new_number = int(input("Введите новое число: "))
+            if new_number in numbers:
+                print("Это число уже существует в списке.")
+            else:
+                numbers.append(new_number)
+                print("Число добавлено в список.")
+
+        elif choice == "2":
+            number_to_remove = int(input("Введите число для удаления: "))
+            if number_to_remove in numbers:
+                numbers = [num for num in numbers if num != number_to_remove]
+                print(f"Все вхождения числа {number_to_remove} были удалены из списка.")
+            else:
+                print(f"Число {number_to_remove} не найдено в списке.")
+
+        elif choice == "3":
+            order = input("Показать список с начала или с конца? (начало/конец) ").lower()
+            if order == "начало":
+                print("Список чисел:", numbers)
+            elif order == "конец":
+                print("Список чисел:", list(reversed(numbers)))
+            else:
+                print("Неверный ввод.")
+
+        elif choice == "4":
+            number_to_check = int(input("Введите число для проверки: "))
+            if number_to_check in numbers:
+                print(f"Число {number_to_check} присутствует в списке.")
+            else:
+                print(f"Число {number_to_check} отсутствует в списке.")
+
+        elif choice == "5":
+            number_to_replace = int(input("Введите число для замены: "))
+            if number_to_replace in numbers:
+                replace_all = input("Заменить все вхождения или только первое? (все/первое) ").lower()
+                new_number = int(input("Введите новое число: "))
+                if replace_all == "все":
+                    numbers = [new_number if num == number_to_replace else num for num in numbers]
+                    print(f"Все вх��ждения числа {number_to_replace} были заменены на {new_number}.")
+                elif replace_all == "первое":
+                    numbers[numbers.index(number_to_replace)] = new_number
+                    print(f"Первое вхождение числа {number_to_replace} было заменено на {new_number}.")
+                else:
+                    print("Неверный ввод.")
+            else:
+                print(f"Число {number_to_replace} не найдено в списке.")
+        elif choice == "6":
+            break
+
+        else:
+            print("Неверный выбор. Попробуйте еще раз.")
+
+
+main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, sth):
+        if len(self.stack) == 10:
+            return 'ЗАПОЛНЕНО'
+        self.stack.append(sth)
+
+    def pop(self):
+        if len(self.stack) == 0:
+            return None
+        remasted = self.stack.pop()
+        return remasted
+
+    def count(self):
+        return len(self.stack)
+
+    def read(self):
+        print(self.stack[-1])
+
+    def clear(self):
+        self.stack.clear()
+d=Stack()
+d.push(13)
+d.push(32)
+d.read()
+
+
+class Stack2:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, sth):
+
+        self.stack.append(sth)
+
+    def pop(self):
+        if len(self.stack) == 0:
+            return None
+        remasted = self.stack.pop()
+        return remasted
+
+    def count(self):
+        return len(self.stack)
+
+    def read(self):
+        print(self.stack[-1])
+
+    def clear(self):
+        self.stack.clear()
+d=Stack()
+d.push(13)
+d.push(32)
+d.read()
+
+
