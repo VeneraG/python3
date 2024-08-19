@@ -1,0 +1,45 @@
+class Car:
+    def __init__(self, num, den):
+        self.__num = int(num)
+        if den != 0:
+            self.__den = int(den)
+
+
+class Load:
+    def load(self, filename, mode='json'):
+        obj_lst = []
+        filemode = {'json': 'r', 'picle': 'rb', 'csv': 'r'}
+        load_dict = {'json': json.load,
+                     'picle': pickle.load,
+                     'csv': lambda f: {rows[0]: rows[1] for rows in csv.reader(f)}}
+        with open(filename, filemode[mode]) as file:
+            f = load_dict[mode](file)
+            for obj in f:
+                fraction = Car(obj['numerator'], obj['denumerator'])
+                obj_lst.append(fraction)
+        return obj_lst
+
+
+class Save:
+    def init(self, filename, mode='json'):
+        filemode = {'json': 'w', 'picle': 'wb', 'csv': 'w'}
+        self.obj_lst = Load().load(filename, mode)
+        self.filename = filename
+        self.filemode = filemode[mode]
+        self.func = self.save_func(mode)
+
+    def append(self, obj):
+        self.obj_lst.append(obj)
+
+    def extend(self, lst):
+        self.obj_lst.extend(lst)
+
+    def save_func(self, mode):
+        save_dict = {'json': lambda data, f: f.writeline(json.dumps(data)),
+                     'picle': pickle.dump,
+                     'csv': lambda data, f: csv.writer(f).writerow(data)}
+        return save_dict[mode]
+
+    def save(self):
+        with open(self.filename, self.filemode) as file:
+            self.func(self.obj_lst, file)
