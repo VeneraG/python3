@@ -1,0 +1,115 @@
+class Recipe:
+    def __init__(self, author, type, name):
+        self.author = author
+        self.type = type
+        self.name = name
+
+    def get_info(self):
+        return f"Brand: {self.author}, Size: {self.type}, Color: {self.name}"
+
+
+class RecipeController:
+    def __init__(self, new):
+        self.new = new
+
+    def create_recipe(self, author, name, type):
+        self.new = Recipe(author, type, name)
+
+    def get_info_recipe(self):
+        return self.new.get_info()
+
+    def update_recipe_author(self):
+        ask2 = input("Update:")
+        self.new.author = ask2
+
+    def update_recipe_type(self):
+        ask2 = input("Update:")
+        self.new.type = ask2
+
+    def update_recipe_name(self):
+        ask2 = input("Update:")
+        self.new.name = ask2
+
+
+class RecipeView:
+    def display_recipe_info(self, info):
+        print(info)
+
+    def get_user_input(self):
+        brand = input("Enter author: ")
+        size = int(input("Enter type: "))
+        color = input("Enter name: ")
+        return brand, size, color
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Shoe:
+    def __init__(self, brand, size, color):
+        self.brand = brand
+        self.size = size
+        self.color = color
+
+    def get_info(self):
+        return f"Brand: {self.brand}, Size: {self.size}, Color: {self.color}"
+
+
+class ShoeController:
+    def __init__(self, model):
+        self.model = model
+
+    def create_shoe(self, brand, size, color):
+        self.model = Shoe(brand, size, color)
+
+    def get_shoe_info(self):
+        return self.model.get_info()
+
+    def update_color(self, new_color):
+        self.model.color = new_color
+
+    def update_size(self, new_size):
+        self.model.size = new_size
+
+
+class ShoeView:
+    def display_shoe_info(self, info):
+        print(info)
+
+    def get_user_input(self):
+        brand = input("Enter brand: ")
+        size = int(input("Enter size: "))
+        color = input("Enter color: ")
+        return brand, size, color
+
+
+def main():
+    view = ShoeView()
+    controller = ShoeController(None)
+    brand, size, color = view.get_user_input()
+    controller.create_shoe(brand, size, color)
+    shoe_info = controller.get_shoe_info()
+    view.display_shoe_info(shoe_info)
+    new_color = input("Enter new color: ")
+    controller.update_color(new_color)
+    updated_shoe_info = controller.get_shoe_info()
+    view.display_shoe_info(updated_shoe_info)
+
+
+if __name__ == "__main__":
+    main()
