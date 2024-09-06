@@ -1,0 +1,123 @@
+2\\\\\import threading
+
+t = input("way to the file:")
+lst = list(map(int, input('nums').split()))
+
+
+def random_num(inp):
+    with open(inp, 'a') as f:
+        f.write(str(lst))
+
+
+def is_prime_num(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+
+def prime(lst, file):
+    primes = []
+    for i in range(len(lst)):
+        if is_prime_num(lst[i]):
+            primes.append(lst[i])
+    with open(file, 'a') as f:
+        f.write('\n' + str(primes))
+
+
+def factorial(lst, file):
+    factorials = []
+    for i in range(len(lst)):
+        d = 1
+        for e in range(1,lst[i]+1):
+            d = d * e
+        factorials.append(d)
+    with open(file, 'a') as f:
+        f.write('\n' + str(factorials))
+
+
+t3 = threading.Thread(target=random_num(t), args=(t,))
+t1 = threading.Thread(target=prime(lst, t))
+t2 = threading.Thread(target=factorial(lst, t))
+
+t3.start()
+t3.join()
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+
+
+
+
+
+
+
+
+
+
+
+1//////import threading
+
+
+class Lst:
+    def __init__(self):
+        self.list = []
+
+    def random_lst(self):
+        self.list = list(map(int, input('nums').split()))
+        print(self.list)
+
+    def p_sum(self):
+        maxim = 0
+        for i in range(len(self.list)):
+            maxim = maxim + self.list[i]
+        print(maxim)
+
+    def p_sr(self):
+        maxim = 0
+        for i in range(len(self.list)):
+            maxim = maxim + self.list[i]
+        print(maxim / len(self.list))
+
+
+t = Lst()
+t3 = threading.Thread(target=t.random_lst(),args=())
+t1 = threading.Thread(target=t.p_sr())
+t2 = threading.Thread(target=t.p_sum())
+
+t3.start()
+t3.join()
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+
+
+
+
+
+3///////import threading
+import os
+import shutil
+
+t = os.listdir()
+t2 = t[2:10]
+
+print(t2)
+
+
+def copy(t):
+    for i in range(len(t)):
+        shutil.copy(
+            os.path.join('C:/dz_py', t[i]),
+            os.path.join('C:/7dz')
+        )
+
+
+t3 = threading.Thread(target=copy(t2))
+
+t3.start()
+t3.join()
