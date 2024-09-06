@@ -1,0 +1,54 @@
+import unittest
+
+
+class Num:
+    def __init__(self):
+        self.nums = []
+
+    def random_num(self):
+        self.nums = [x for x in range(5)]
+        return self.nums
+
+    def sum(self):
+        d = 0
+        for i in range(len(self.nums)):
+            d = d + self.nums[i]
+        return d
+
+    def sr(self):
+        d = 0
+        for i in range(len(self.nums)):
+            d = d + self.nums[i]
+        return d / len(self.nums)
+
+    def min(self):
+        return min(self.nums)
+
+
+r = Num()
+print(r.random_num())
+print(r.sr())
+
+
+class TestUM(unittest.TestCase):
+
+    def testAssertTrue(self):
+        """
+        Вызывает ошибку если значение аргумента != True
+        :return:
+        """
+        self.assertTrue(r.sum(), 10)
+
+    def testAsserSR(self):
+        """
+        Вызывает ошибку если значение аргумента != True
+        :return:
+        """
+        self.assertEqual(r.sr(), 2.0)
+
+    def testAsserMin(self):
+        """
+        Вызывает ошибку если значение аргумента != True
+        :return:
+        """
+        self.assertEqual(r.min(), 0)
