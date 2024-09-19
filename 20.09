@@ -1,0 +1,183 @@
+import socket
+import threading
+
+# Игровое поле
+board = [" " for _ in range(9)]
+
+# Текущий игрок
+current_player = "X"
+
+# Флаг начала игры
+game_started = False
+
+# Флаг игры
+game_on = False
+
+# Обработчик клиентских запросов
+def handle_client(conn, addr):
+    global board, current_player, game_started, game_on
+
+    print(f"New connection from {addr}")
+
+    # Отправка приветствия клиенту
+    conn.sendall("Welcome to Tic Tac Toe game!".encode())
+
+    while True:
+        try:
+            # Получение запроса от клиента
+            data = conn.recv(1024)
+            if not data:
+                break
+
+            # Разбор запроса
+            request = data.decode().strip()
+
+            if request == "start":
+                if game_started:
+                    conn.sendall("Game is already started.".encode())
+                else:
+                    game_started = True
+                    game_on = True
+                    conn.sendall("Game started!".encode())
+                    print("Game started")
+            elif request == "move":
+                if not game_on:
+                    conn.sendall("Game is not started yet.".encode())
+                else:
+                    # Получение хода от клиента
+                    move = int(conn.recv(1024).decode().strip())
+                    if board[move] == " ":
+                        board[move] = current_player
+                        conn.sendall(f"Your move: {move}".encode())
+                        print(f"Player {current_player} moved to {move}")
+
+                        # Проверка победы
+                        if check_winner(current_player):
+                            conn.sendall(f"Player {current_player} wins!".encode())
+                            print(f"Player {current_player} wins!")
+                            game_on = False
+                        elif check_tie():
+                            conn.sendall("It's a tie!".encode())
+                            print("It's a tie!")
+                            game_on = False
+                        else:
+                            # Переключение хода на другого игрока
+                            current_player = "O" if current_player == "X" else "X"
+                            conn.sendall(f"Switch to player {current_player}".encode())
+                    else:
+                        conn.sendall("That position is already taken.".encode())
+            elif request == "quit":
+                if game_on:
+                    conn.sendall(f"Player {current_player if current_player == 'X' else 'O'} wins by forfeit.".encode())
+                    print(f"Player {current_player if current_player == 'X' else 'O'} wins by forfeit.")
+                game_on = False
+                game_started = False
+                board = [" " for _ in range(9)]
+                current_player = "X"
+                conn.sendall("Game ended.".encode())
+                print("Game ended")
+                break
+            else:
+                conn.sendall("Invalid request.".encode())
+
+        except Exception as e:
+            print(f"Error handling client: {e}")
+            break
+
+    conn.close()
+    print(f"Connection closed with {addr}")
+
+# Проверка победы
+def check_winner(player):
+    # Проверка строк
+    for i in range(0, 9, 3):
+        if board[i] == board[i+1] == board[i+2] == player:
+            return True
+    # Проверка столбцов
+    for i in range(3):
+        if board[i] == board[i+3] == board[i+6] == player:
+            return True
+    # Проверка диагоналей
+    if board[0] == board[4] == board[8] == player:
+        return True
+    if board[2] == board[4] == board[6] == player:
+        return True
+    return False
+
+# Проверка ничьей
+def check_tie():
+    return all(cell != " " for cell in board)
+
+# Основная функция сервера
+def start_server():
+    HOST = "127.0.0.1"
+    PORT = 65432
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind((HOST, PORT))
+        s.listen()
+        print(f"Server listening on {HOST}:{PORT}")
+
+        while True:
+            conn, addr = s.accept()
+            thread = threading.Thread(target=handle_client, args=(conn, addr))
+            thread.start()
+
+if __name__ == "__main__":
+    start_server()
+
+
+
+
+
+
+
+
+
+
+
+import socket
+
+HOST = "127.0.0.1"
+PORT = 65432
+
+def play_game():
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+
+        # Получение приветствия от сервера
+        welcome_message = s.recv(1024).decode()
+        print(welcome_message)
+
+        while True:
+            user_input = input("Enter 'start' to start the game, 'move' to make a move, or 'quit' to quit: ")
+
+            # Отправка запроса на сервер
+            s.sendall(user_input.encode())
+
+            if user_input == "start":
+                # Получение ответа от сервера
+                response = s.recv(1024).decode()
+                print(response)
+            elif user_input == "move":
+                # Получение доски от сервера
+                board_str = s.recv(1024).decode()
+                print(f"Current board: {board_str}")
+
+                # Ввод хода
+                move = int(input("Enter your move (0-8): "))
+                s.sendall(str(move).encode())
+
+                # Получение ответа от сервера
+                response = s.recv(1024).decode()
+                print(response)
+            elif user_input == "quit":
+                # Получение ответа от сервера
+                response = s.recv(1024).decode()
+                print(response)
+                break
+            else:
+                print("Invalid input. Please try again.")
+
+if __name__ == "__main__":
+    play_game()
