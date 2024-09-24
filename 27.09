@@ -1,0 +1,49 @@
+select Name,Kallories from v_f
+where Kallories <1500;
+
+select Name,Kallories from v_f
+where  Kallories<1500 and Kallories>110;
+
+SELECT * FROM v_f 
+WHERE Name LIKE 'tomato%';
+
+SELECT * FROM v_f 
+WHERE Name LIKE 'tomato%';
+
+
+SELECT * FROM v_f 
+WHERE Color LIKE 'orange%' or Color like 'red%';
+
+
+SELECT COUNT(Name) FROM v_f vf
+WHERE type_ LIKE 'f%' ;
+
+SELECT COUNT(Name) FROM v_f vf
+WHERE type_ LIKE 'v%' ;
+
+SELECT COUNT(Name) FROM v_f vf
+WHERE Color LIKE 'red%' ;
+
+
+SELECT COUNT(Name) FROM v_f vf
+WHERE Color LIKE 'red%' ;
+SELECT COUNT(Name) FROM v_f vf
+WHERE Color LIKE 'white%' ;
+SELECT COUNT(Name) FROM v_f vf
+WHERE Color LIKE 'orange%' ;
+
+SELECT max(Color) FROM v_f vf;
+
+
+SELECT min(Kallories) FROM v_f vf
+ ;
+
+SELECT max(Kallories) FROM v_f vf
+ ;
+
+
+SELECT avg(Kallories) FROM v_f vf;
+
+
+SELECT max(Name) FROM v_f vf;
+SELECT min(Name) FROM v_f vf;
