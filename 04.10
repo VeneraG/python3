@@ -1,0 +1,48 @@
+select Name,Financing,Id from departments d ;
+
+select Name from groupss g  ;
+
+select Surname,(Salary+Premium) from teachers t  ;
+
+select concat("The dean in faculty ",Name," is ",Dean) from faculties f  ;
+
+select Surname from teachers t  
+where IsProfessor=1 and Salary >=1050 ;
+
+select Financing from departments d 
+where Financing >=11000 and Financing <=25000
+;
+
+select Name from faculties f 
+where Name !="Computer Science" ;
+
+
+select Surname,Possition from teachers t 
+where IsAssistant=1 ;
+
+select Surname,Possition,Salary,Premium from teachers t 
+where Premium >160 and Premium <550 ;
+
+select Surname,Salary from teachers t 
+where IsAssistant =1 ;
+
+select Surname,Possition from teachers t 
+where EmploymentDate > '2000-01-01' ;
+
+SELECT [Name] AS [Name of Department]
+FROM Departments
+WHERE [Name]<'Software Development'
+ORDER BY [Name];
+
+
+SELECT Surname FROM teachers t 
+where (Salary+Premium)>1200 and IsAssistant =1
+;
+
+SELECT Name FROM groupss g 
+where Rating >2 and Rating <4
+;
+
+SELECT Surname FROM teachers t 
+where Salary<550 or Premium <200
+;
