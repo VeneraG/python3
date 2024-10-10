@@ -1,0 +1,38 @@
+SELECT COUNT(*) AS num_teachers
+FROM Teachers
+WHERE DepartmentName = 'Software Development';
+
+SELECT COUNT(*) AS num_lectures
+FROM Lectures
+WHERE TeacherName = 'Dave McQueen';
+
+SELECT COUNT(*) AS num_classes
+FROM Lectures
+WHERE ClassroomName = 'D201';
+
+SELECT ClassroomName, COUNT(*) AS num_lectures
+FROM Lectures
+GROUP BY ClassroomName;
+
+SELECT COUNT(DISTINCT s.StudentName) AS num_students
+FROM Lectures l
+JOIN Students s ON l.GroupName = s.GroupName
+WHERE l.TeacherName = 'Jack Underhill';
+
+SELECT AVG(Salary) AS avg_salary
+FROM Teachers
+WHERE DepartmentName IN (
+  SELECT DepartmentName
+  FROM Departments
+  WHERE FacultyName = 'Computer Science'
+);
+
+SELECT 
+  (SELECT COUNT(*) FROM Students WHERE GroupName = g.GroupName) AS num_students,
+  MIN(num_students) AS min_students, 
+  MAX(num_students) AS max_students
+FROM (
+  SELECT GroupName
+  FROM Students
+  GROUP BY GroupName
+) g;
